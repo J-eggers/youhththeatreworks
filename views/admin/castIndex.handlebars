@@ -1,0 +1,13 @@
+<!-- This maybe be priavte or public view depending on what they want -->
+<div class="container">
+{{#each shows}}
+<div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <a href="/admin/cast/{{id}}" class="btn btn-dark btn-block mb-2">View Cast</a>
+    
+</div>
+
+{{else}}
+    <p>No Shows Listed</p>
+{{/each}}
+</div>

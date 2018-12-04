@@ -1,0 +1,13 @@
+<!-- This is  a private view-->
+<div class="container">
+{{#each shows}}
+<div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+    <a href="/shows/register/{{id}}" class="btn btn-primary btn-block mb-2">Register</a>
+</div>
+
+{{else}}
+    <p>No Shows Listed</p>
+{{/each}}
+</div>

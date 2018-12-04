@@ -1,0 +1,114 @@
+{{#if user.subscribed}}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="resp-hidden display-4">{{user.name}}'s Home Page</h1>
+      <div class="container">
+           <h2 class="display-1-resp">{{show.title}}</h2>
+           
+      <h4>Reminder</h4>
+      <hr>
+      <p class="lead">{{show.reminder}}
+      </p>
+      <hr class="mb-3">
+        <div class="row mx-auto mt-3">
+                <a href="/shows" class="btn btn-primary col-6 mx-auto">Register</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
+  <section class="card col-md-10  mx-auto mb-2">
+    <div class="card-body">
+      <h3>Rehersal Schedule</h3>
+      <hr>
+      <p class="bodyArticle">{{show.rehearsal}}</p>
+      <hr>
+        
+    </div>
+  </section>
+
+    <section class="card col-md-10  mx-auto card-body mb-2">
+        <div class="card-body">
+        <h3 >Kids Profiles</h3> 
+        <hr>
+            <ul  class="list-group">
+        {{#each user.kidname}} 
+            <li class=" sandy list-group-item" id="{{id}}">
+               
+                <input type="hidden" name="_method" value="PUT">
+                    <strong>{{name}}</strong>
+                  
+                    <a href="/kids/kidprofile/{{id}}" class="float-right add-item mr-2m fabutton">
+                        <i class="add-item fas fa-user fas-fabutton mr-1"></i><span >(View User information)</span>
+                    </a>
+                    <a href="/kids/kidEdit/{{id}}" class="float-right add-item mr-2 fabutton">
+                        <i class="fas fa-pencil-alt fas-fabutton mr-1"></i><span>(Add User information)</span>
+                    </a>
+                </form>
+            </li>
+        {{else}}
+            <li class="list-group-item sandy">
+                <strong> No kids listed</strong>
+            </li>
+        {{/each}}
+
+
+    </section>
+
+  <section class="card col-md-10 mx-auto mb-5">
+    <div class="card-body">
+        <h3 >Register Kids</h3> 
+        <hr>
+            <ul  class="list-group">
+                {{#each user.kidname}} 
+                
+                    {{#if registered}}
+                            <li class="list-group-item sandy text-white" id="{{id}}">
+                                <form action="/shows/register/{{../show.id}}?_method=DELETE" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <strong>{{name}}</strong>
+                                <input type="hidden" name="kidname" value="{{name}}">
+                                <input type="hidden" name="kidID"  value="{{id}}">
+                                <button type="submit" class="float-right fabutton remove-item text-white">
+                                    Registered<i class="remove-item fas fa-user-minus fas-fabutton ml-2"></i>
+                                </button>
+                                
+                            </li>
+                        </form>
+                    {{else}}
+                        <li class="list-group-item bg-dark" id="{{id}}">
+                            <form action="/shows/register/{{../show.id}}?_method=PUT" method="post">
+                            <input type="hidden" name="_method" value="PUT">
+                                <strong>{{name}}</strong>
+                                <input type="hidden" name="kidname" value="{{name}}">
+                                <input type="hidden" name="kidID" value="{{id}}">
+                                <button type="submit" class="float-right fabutton add-item ">
+                                    <i class="add-item fas fa-user-plus fas-fabutton mr-2"></i><span>(Register)</span>
+                                </button>
+                            </form>
+                        </li>
+                    
+                    {{/if}}
+                {{else}}
+                <li class="list-group-item sandy">
+                    <strong> No kids listed</strong>
+                </li>
+                {{/each}}
+            </ul>
+            <!--<button class="mt-2 btn btn-primary float-right">Missing a kid?</button>-->
+        </div>
+    </section>
+    
+    
+{{else}}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Register kids for shows</h1>
+        <a href="/shows" class="btn btn-primary btn-block mb-2">Register</a>
+    </div>
+  </div>
+{{/if}}
+ </div> 
+    
+    

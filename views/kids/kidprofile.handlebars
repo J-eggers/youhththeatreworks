@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h1>{{kid.name}}</h1>
+            <hr>
+            {{#if kid.allergies}}
+                <h2>Allergy : {{kid.allergies}}</h2> 
+                <hr>
+            {{/if}}
+            <section>
+                <h2>Contact information </h2>
+                <hr>
+                <table class="table">
+                    <thead class="nav-Theme ">
+                        <tr>
+                            <th>Parent</th>
+                            <th>Cell</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="sandy">
+                
+                        <td>{{parent.name}}</td> 
+                        <td>{{parent.phone}}</td>
+                        <td>{{parent.email}}</td>
+                    </tr>
+                    </tbody>
+              </table>
+            </section>
+            Address:{{parent.address}}
+            <hr>
+            <h2>Personal information </h2>
+            <hr>
+             <table class="table">
+                    <thead class="nav-Theme ">
+                        <tr>
+                            <th>Pant Size</th>
+                            <th>Shirt Size</th>
+                            <th>Age</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="sandy">
+                            <td>{{kid.sizes.pants}}</td> 
+                            <td>{{kid.sizes.shirt}}</td>
+                            <td>{{kid.age}}</td>
+                        </tr>
+                    </tbody>
+              </table>
+              
+            <hr>
+            <h2> Experience </h2>
+            <p>{{kid.experience}}</p>
+            <hr>
+
+
+            
+        </div>
+    </div>
+</div>

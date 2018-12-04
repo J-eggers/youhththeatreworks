@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card card-body">
+    <h3>Add a Reminder for {{show.title}}</h3>
+    <form action="/admin/reminder/{{show.id}}" method="post">
+      <div class="form-group">
+        <label for="editor1">Body</label>
+        <textarea required class="form-control" name="reminder">{{show.reminder}}</textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

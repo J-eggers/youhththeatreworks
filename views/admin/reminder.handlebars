@@ -1,0 +1,14 @@
+<!-- This is  a private view-->
+<div class="container">
+{{#each shows}}
+<div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <p>{{reminder}}</p>
+    <a href="/admin/reminderEdit/{{id}}" class="btn btn-primary btn-block mb-2">Edit Reminder</a>
+     
+</div>
+
+{{else}}
+    <p>No Shows Listed</p>
+{{/each}}
+</div>

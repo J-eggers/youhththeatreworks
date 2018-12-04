@@ -1,0 +1,17 @@
+<!-- This maybe be priavte or public view depending on what they want -->
+<div class="container">
+{{#each shows}}
+<div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <p>{{description}}</p>
+    <form method="post" action="/admin/subscribe/{{id}}?_method=PUT">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="showId" value="{{id}}">
+        <input type="submit" class="btn btn-primary btn-block" value="Subscribe">
+    </form>
+</div>
+
+{{else}}
+    <p>No Shows Listed</p>
+{{/each}}
+</div>

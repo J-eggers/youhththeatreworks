@@ -1,0 +1,32 @@
+{
+  "name": "youth_theatre",
+  "version": "1.0.0",
+  "description": "A website for a claremont's youth theater program",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Joseph Eggers",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.1",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "helmet": "^3.14.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.2.17",
+    "nodemailer": "^4.6.8",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "stripe": "^6.12.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
+  }
+}

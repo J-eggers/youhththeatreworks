@@ -1,0 +1,35 @@
+
+<div class="container">
+  <div class="card card-body">
+    <h3>Edit Show</h3>
+    <form action="/kids/kidEdit/{{kid.id}}?_method=PUT" method="post">
+      <input type="hidden" name="_method" value="PUT">
+      <div class="form-group">
+        <label for="title">Name</label>
+        <input value="{{kid.name}}" required type="text" class="form-control" name="name">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input required value="{{kid.age}}" type="text" class="form-control" name="age">
+      </div>
+      <div class="form-group">
+        <label for="allergies">Allergies</label>
+        <textarea class="form-control" name="allergies" >{{kid.allergies}}</textarea>
+      </div>
+       <div class="form-group">
+        <label for="pants">Pant Size</label>
+        <input value="{{kid.sizes.pants}}" type="text" class="form-control" name="pants">
+      </div>
+      <div class="form-group">
+        <label for="shirt">Shirt Size</label>
+        <input required value="{{kid.sizes.shirt}}" type="text" class="form-control" name="shirt">
+      </div>
+     <div class="form-group">
+        <label for="experience">Past Experience</label>
+        <textarea class="form-control" name="experience" >{{kid.experience}}</textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

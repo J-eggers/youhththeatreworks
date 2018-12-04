@@ -1,0 +1,22 @@
+{{#if user.rank}}
+
+<nav class="navbar fixed-bottom  navbar-expand navbar-dark">
+    <div class="container">
+        <a href="/admin" class="navbar-brand">Admin Panel</a>
+            <ul class="navbar-nav ml-auto"> 
+                <li class="nav-item">
+                    <a href="/admin/reminderEdit/{{user.subscribed}}" class="nav-link">
+                        <i class="far fa-envelope mr-2"></i><span class="resp-hidden">Send Reminder</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/cast/{{user.subscribed}}" class="nav-link">
+                        <i class="fas fa-users mr-2"></i><span class="resp-hidden">Cast Roster</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="nav-background2"></div>
+{{/if}}

@@ -1,0 +1,27 @@
+
+<div class="container">
+  <div class="card card-body">
+    <h3>Edit Show</h3>
+    <form action="/shows/{{show.id}}?_method=PUT" method="post">
+      <input type="hidden" name="_method" value="PUT">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input value="{{show.title}}" required type="text" class="form-control" name="title">
+      </div>
+      <div class="form-group">
+        <label for="showDate">Show Date</label>
+        <input required type="date" class="form-control" name="showDate">
+      </div>
+      <div class="form-group">
+        <label for="description">Show Description</label>
+        <textarea  required class="form-control" name="description">{{show.description}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="rehearsal">Rehearsal Dates and Times</label>
+        <textarea required class="form-control" name="rehearsal" >{{show.rehearsal}}</textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

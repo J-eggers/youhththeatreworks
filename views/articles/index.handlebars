@@ -1,0 +1,23 @@
+<!-- This maybe be priavte or public view depending on what they want -->
+<div class="container">
+    <div id="accordion" class="mb-7">
+        {{#each articles}}
+        <article class="card mb-2">
+            <div class="card-header">
+                <h2 >
+                    <a href="#collapse{{@index}}" data-toggle="collapse">{{title}}</a>
+                </h2>
+            </div>
+            <div data-parent="#accordion" id="collapse{{@index}}" class="collapse">
+                <p class="bodyArticle card-body">{{body}}</p>
+            </div>
+            
+        
+        </article>
+
+        {{else}}
+            <p>No Newsletter Listed</p>
+        {{/each}}
+        
+    </div>
+</div>

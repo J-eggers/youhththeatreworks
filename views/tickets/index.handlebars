@@ -1,0 +1,37 @@
+<!-- This is  a private view-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card card-body">
+                <h3 class="text-center">Tickets</h3>
+            <a href="/tickets/create" class="btn btn-primary btn-block mb-2">Create Tickets</a>
+             <a href="/tickets/stopticket" class="btn btn-danger btn-block mb-2">STOP SELLING ALL TICKETS</a>
+            
+
+        </div>
+    </div>
+    </div>
+    <br>
+    <h3>Shows</h3>
+    <hr>
+
+
+{{#each modelsTicket}}
+<div class="card card-body mb-2">
+    <h4>{{title}}</h4>
+    <p>{{showDate}}</p>
+    <div class="row px-2 m-1">
+        <a href="/tickets/guestlist/{{id}}" class="btn btn-dark col-md-6">View Guestlist</a>
+        <a href="/tickets/edit/{{id}}" class="btn btn-primary col-md-6 ">Edit Ticket Information</a>
+        <form method="post" action="/tickets/{{id}}?_method=DELETE" class="col-md-6 p-0">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-danger w-100" value="Delete">
+        </form>
+        <a href="/tickets/sellticket/{{id}}" class="btn btn-secondary col-md-6 pr-1">publish tickets</a>
+     </div>
+</div>
+
+{{else}}
+    <p>No Shows Listed</p>
+{{/each}}
+</div>

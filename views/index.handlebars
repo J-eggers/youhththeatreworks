@@ -1,0 +1,138 @@
+<!-- SHOWCASE -->
+<section id="showcase" class="py-5">
+    <div class="primary-overlay text-white">
+        <div class="container">
+            <div class="row">
+                {{#if modelsTicket}}
+        
+                <a href="#tickets" class="btn btn-outline-secondary btn-lg text-white d-s-block d-md-none">
+                        <i class="fas fa-ticket-alt"></i> Buy Tickets
+                </a>
+                {{/if}}
+                <div class="col-md-6 text-center">
+                    <h2 class="display-3 mt-5 pt-5">
+                        Do What You Dream Of..
+                    </h2>
+                    <p class="lead">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, consectetur.</p>
+                    <a href="/articles" class="btn btn-outline-secondary btn-lg text-white">
+                        <i class="fas fa-arrow-right"></i> Read More
+                    </a>
+                </div>
+                {{#if modelsTicket}}
+                <div id="tickets" class="col-md-5 mx-auto mt-5-resp pt-5">
+                    <div class="card card-body bg-secondary">
+                        <h3>
+                        {{modelsTicket.title}}
+                        </h3>
+                        <form action="tickets/order" method="POST">
+                            <div class="form-group">
+                                <label for="adultTickets" class="text-white d-block">Number of Adult Tickets <small class="float-right">cost ${{modelsTicket.cost.adult}}</small></label>
+                                <input required type="text" id="adultTickets" name="adultTickets"  placeholder="0" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="childTickets" class="text-white d-block"> Number of Child Tickets <small class="float-right">cost ${{modelsTicket.cost.child}}</small></label>
+                                <input type="text" id="childTickets" name="childTickets" placeholder="0" class="form-control">
+                            </div>
+                        <button class="btn btn-outline-primary btn-block btn-lg text-white">Buy Tickets</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+
+<section id="home-2" class="py-5 home-2">
+    <div class="container mt-resp-section">
+        <div class="row">
+            <div class="col-md-6 order-2">
+                <img src="img/13584760_1125661377457262_4812918032024766761_o.jpg" alt="" class="img-fluid mb-3 rounded-circle">
+            </div>
+            <div class="col-md-6 order-1">
+                <h3>Create Your Passion</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas temporibus commodi illo consequatur libero rerum adipisci vel rem, obcaecati harum.</p>
+                <div class="d-flex">
+                    <div class="p-4 align-self-start">
+                        <i class="fas fa-check fa-2x"></i>
+                    </div>
+                    <div class="p-4 align-self-end">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint sapiente, vero asperiores iste ullam.
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="p-4 align-self-start">
+                        <i class="fas fa-check fa-2x"></i>
+                    </div>
+                    <div class="p-4 align-self-end">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nisi, quasi recusandae assumenda error nam.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script>
+                            document.getElementById('adultTickets').addEventListener('blur', validateTicket);
+                            document.getElementById('childTickets').addEventListener('blur', validateTicket);
+                            
+                            
+
+                            function validateTicket() {
+                                const child = document.getElementById('childTickets');
+                                const adult = document.getElementById('adultTickets');
+                                const re = /^[0-9]{0,2}$/;
+                                if(!re.test(child.value)){
+                                    child.classList.add('is-invalid');
+                                } else {
+                                    child.classList.remove('is-invalid');
+                                }
+                                if(!re.test(adult.value)){
+                                    adult.classList.add('is-invalid');
+                                } else {
+                                    adult.classList.remove('is-invalid');
+                                }
+                            }
+                            
+                        </script>
+
+
+                {{else}}
+            </div> 
+        </div>
+    </div>
+</section>
+
+<section id="home-2" class="py-5 home-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 order-2">
+                <img src="img/13584760_1125661377457262_4812918032024766761_o.jpg" alt="" class="img-fluid mb-3 rounded-circle">
+            </div>
+            <div class="col-md-6 order-1">
+                <h3>Create Your Passion</h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas temporibus commodi illo consequatur libero rerum adipisci vel rem, obcaecati harum.</p>
+                <div class="d-flex">
+                    <div class="p-4 align-self-start">
+                        <i class="fas fa-check fa-2x"></i>
+                    </div>
+                    <div class="p-4 align-self-end">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint sapiente, vero asperiores iste ullam.
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="p-4 align-self-start">
+                        <i class="fas fa-check fa-2x"></i>
+                    </div>
+                    <div class="p-4 align-self-end">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nisi, quasi recusandae assumenda error nam.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{{/if}}

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="card col-md-8 mx-auto">
+            <div class="card-body">
+            <h3 class="text-center ">Register Kids</h3> 
+                <ul  class="list-group">
+                    {{#each user.kidname}} 
+                    
+                        {{#if registered}}
+                                <li class=" list-group-item sandy text-white" id="{{id}}">
+                                    <form action="/shows/register/{{../show.id}}?_method=DELETE" method="post">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <strong>{{name}}</strong>
+                                    <input type="hidden" name="kidname" value="{{name}}">
+                                    <input type="hidden" name="kidID" value="{{id}}">
+                                    <button type="submit" class="float-right fabutton remove-item text-white">
+                                        Registered<i class="remove-item fas fa-user-minus fas-fabutton ml-2"></i>
+                                    </button>
+                                    
+                                </li>
+                            </form>
+                        {{else}}
+                            <li class="list-group-item bg-dark" id="{{id}}">
+                                <form action="/shows/register/{{../show.id}}?_method=PUT" method="post">
+                                <input type="hidden" name="_method" value="PUT">
+                                    <strong>{{name}}</strong>
+                                    <input type="hidden" name="kidname" value="{{name}}">
+                                    <input type="hidden" name="kidID" value="{{id}}">
+                                    <button type="submit" class="float-right fabutton add-item ">
+                                        <i class="add-item fas fa-user-plus fas-fabutton mr-2"></i><span>(Register)</span>
+                                    </button>
+                                </form>
+                            </li>
+                        
+                        {{/if}}
+                    {{else}}
+                    <li class="list-group-item sandy">
+                        <strong> No kids listed</strong>
+                    </li>
+                    {{/each}}
+                </ul>
+                <!--<button class="mt-2 btn btn-primary float-right">Missing a kid?</button>-->
+            </div>    
+        </div>
+    </div>
+</div>
