@@ -1,0 +1,16 @@
+<!-- This maybe be priavte or public view depending on what they want -->
+<div class="container">
+    {{#each showClips}}
+    <div class="">
+        <h1>{{title}}</h1>
+        <div class="responsive-video">
+            {{{body}}}
+        </div>
+
+    </div>
+    <hr>
+    {{else}}
+    <p>No Show Clips Listed</p>
+    {{/each}}
+
+</div>

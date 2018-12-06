@@ -2,37 +2,43 @@ body {
   background: #937c30;
   color: #f8f9fa; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #f8f9fa;
   text-shadow: 0 2px 2px rgba(61, 86, 37, 0.34), 0 3px 1px rgba(61, 86, 37, 0.32), 0 1px 5px rgba(61, 86, 37, 0.22);
-  -webkit-transition: -webkit-text-shadow .25s;
-  transition: -webkit-text-shadow .25s;
-  transition: text-shadow .25s;
-  transition: text-shadow .25s, -webkit-text-shadow .25s; }
+  -webkit-transition: -webkit-text-shadow 0.25s;
+  transition: -webkit-text-shadow 0.25s;
+  transition: text-shadow 0.25s;
+  transition: text-shadow 0.25s, -webkit-text-shadow 0.25s; }
 
 #accordion a {
   color: #fcfcfc; }
 
 .sandy {
-  background: #584D20;
+  background: #584d20;
   text-shadow: 0 2px 2px rgba(0, 0, 0, 0.14), 0 3px 1px rgba(0, 0, 0, 0.12), 0 1px 5px rgba(0, 0, 0, 0.2); }
 
 hr {
-  background: #D4BD72; }
+  background: #d4bd72; }
 
-.jumbotron, .card {
+.jumbotron,
+.card {
   background: url("../img/dark_embroidery2.png");
   color: #f8f9fa; }
 
 .card {
   box-shadow: 0 2px 2px 0 rgba(61, 86, 37, 0.34), 0 3px 1px -2px rgba(61, 86, 37, 0.32), 0 1px 5px 0 rgba(61, 86, 37, 0.22);
-  -webkit-transition: -webkit-box-shadow .25s;
-  transition: -webkit-box-shadow .25s;
-  transition: box-shadow .25s;
-  transition: box-shadow .25s, -webkit-box-shadow .25s; }
+  -webkit-transition: -webkit-box-shadow 0.25s;
+  transition: -webkit-box-shadow 0.25s;
+  transition: box-shadow 0.25s;
+  transition: box-shadow 0.25s, -webkit-box-shadow 0.25s; }
 
 .form-control {
-  border-color: #506D41;
+  border-color: #506d41;
   background: #fcfcfc; }
 
 label {
@@ -47,15 +53,15 @@ label {
 .fas-fabutton {
   color: #fff;
   text-shadow: 0 2px 2px rgba(61, 86, 37, 0.34), 0 3px 1px rgba(61, 86, 37, 0.32), 0 1px 5px rgba(61, 86, 37, 0.22);
-  -webkit-transition: -webkit-text-shadow .25s;
-  transition: -webkit-text-shadow .25s;
-  transition: text-shadow .25s;
-  transition: text-shadow .25s, -webkit-text-shadow .25s; }
+  -webkit-transition: -webkit-text-shadow 0.25s;
+  transition: -webkit-text-shadow 0.25s;
+  transition: text-shadow 0.25s;
+  transition: text-shadow 0.25s, -webkit-text-shadow 0.25s; }
 
 .nav-Theme {
   background: url("../img/spirationDark.png");
-  box-shadow: 2px 2px 5px #7A682E;
-  opacity: .9; }
+  box-shadow: 2px 2px 5px #7a682e;
+  opacity: 0.9; }
 
 .display-1-resp {
   font-size: 6rem;
@@ -66,7 +72,7 @@ label {
   margin-bottom: 40px;
   min-height: 94px;
   width: 100%;
-  background: #7A682E; }
+  background: #7a682e; }
 
 .nav-background2 {
   min-height: 80px;
@@ -75,20 +81,20 @@ label {
 
 .navbar {
   background: url("../img/spirationDark.png");
-  box-shadow: 2px 2px 5px #7A682E;
-  opacity: .9; }
+  box-shadow: 2px 2px 5px #7a682e;
+  opacity: 0.9; }
   .navbar .nav-item {
     font-size: 1.2rem;
     padding-right: 1rem; }
 
 .navbar-admin {
   background: url("../img/spirationDark.png");
-  box-shadow: 2px 2px 5px #7A682E;
-  opacity: .9;
+  box-shadow: 2px 2px 5px #7a682e;
+  opacity: 0.9;
   height: 3vh; }
   .navbar-admin .nav-item {
     font-size: 1rem;
-    padding-right: .8rem; }
+    padding-right: 0.8rem; }
 
 #showcase {
   position: relative;
@@ -111,11 +117,11 @@ label {
     margin-top: 3rem !important; }
 
 .home-2 {
-  background: #584D20;
+  background: #584d20;
   color: #fff; }
 
 .input-group-text {
-  background-color: #D4BD72;
+  background-color: #d4bd72;
   color: #fff; }
 
 #authors img {
@@ -145,7 +151,7 @@ label {
   overflow: hidden; }
 
 #authors .card:hover {
-  background: #584D20;
+  background: #584d20;
   color: #fff; }
 
 #authors .registered {
@@ -160,18 +166,31 @@ label {
 .bodyArticle {
   white-space: pre-wrap; }
 
+.responsive-video {
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  position: relative; }
+
+.responsive-video iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+
 #admin i {
   margin: auto;
   text-align: center;
   padding: 25px; }
 
-#admin .fas, #admin .far, #admin .fab {
+#admin .fas,
+#admin .far,
+#admin .fab {
   font-size: 80px;
   height: 150px;
   width: 150px; }
 
 .text-gold {
-  color: #CDB33A; }
+  color: #cdb33a; }
 
 a.text-gold:hover {
   color: #e0b127; }
@@ -198,7 +217,9 @@ a.text-gold:hover {
     margin: auto;
     text-align: center;
     padding: 10px; }
-  #admin .fas, #admin .far, #admin .fab {
+  #admin .fas,
+  #admin .far,
+  #admin .fab {
     font-size: 45px;
     height: 100px;
     width: 100px; }
@@ -213,6 +234,6 @@ a.text-gold:hover {
   .resp-hidden {
     display: none; }
   table {
-    font-size: .9rem; }
+    font-size: 0.9rem; }
   nav h3 {
     font-size: 1.5rem; } }

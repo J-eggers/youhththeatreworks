@@ -1,37 +1,37 @@
- <section id="posts">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <h4>Cast for {{modelsTicket.title}}</h4>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead class="nav-Theme">
-                  <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Adult Tickets</th>
-                    <th>Child Tickets</th>
-                  </tr>
-                </thead>
-                {{#each modelsTicket.ticket}}
-                <tbody>
-                  <tr>
-                    <td>{{@index}}</td>
-                    <td>{{name}}</td>
-                    <td>{{email}}</td>
-                    <td>{{adultTicket}}</td>
-                    <td>{{childTicket}} </td>
-                  </tr>
+<section id="posts">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <h4>Cast for {{modelsTicket.title}}</h4>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead class="nav-Theme">
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Adult Tickets</th>
+                  <th>Child/Senior Tickets</th>
+                </tr>
+              </thead>
+              {{#each modelsTicket.ticket}}
+              <tbody>
+                <tr>
+                  <td>{{@index}}</td>
+                  <td>{{name}}</td>
+                  <td>{{email}}</td>
+                  <td>{{adultTicket}}</td>
+                  <td>{{childTicket}} </td>
+                </tr>
                 {{/each}}
-                </tbody>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

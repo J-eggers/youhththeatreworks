@@ -5,43 +5,38 @@ const { ensureAuthenticated, adminAuthentication } = require('../helpers/auth');
 
 //___________  Load Model  ___________
 //Load Idea Model
-require('../models/Articles');
-const Article = mongoose.model('articles');
+require('../models/ShowClips');
+const ShowClips = mongoose.model('showClips');
 
 // ________________________________
 
 //___________ Routes for the Shows____________-
 //Shows Index page (public)
 router.get('/', (req, res) => {
-  Article.find({})
+  ShowClips.find({})
     .sort({ date: 'desc' })
-    .then(articles => {
-      res.render('articles/index', {
-        articles: articles
+    .then(showClips => {
+      res.render('articles/showClips', {
+        showClips: showClips
       });
     });
 });
 
 // Add Article Form (admin only)
-router.get(
-  '/addArticle',
-  ensureAuthenticated,
-  adminAuthentication,
-  (req, res) => {
-    res.render('articles/addArticle');
-  }
-);
+router.get('/Add', ensureAuthenticated, adminAuthentication, (req, res) => {
+  res.render('articles/showClipsAdd');
+});
 // Edit Article Form (admin only)
 router.get(
-  '/editArticle/:id',
+  '/edit/:id',
   ensureAuthenticated,
   adminAuthentication,
   (req, res) => {
-    Article.findOne({
+    ShowClips.findOne({
       _id: req.params.id
-    }).then(article => {
-      res.render('articles/editArticle', {
-        article: article
+    }).then(showClips => {
+      res.render('articles/showClipEdit', {
+        showClips: showClips
       });
     });
   }
@@ -60,7 +55,7 @@ router.post('/', ensureAuthenticated, adminAuthentication, (req, res) => {
     errors.push({ text: 'Please select a show date' });
   }
   if (errors.length > 0) {
-    res.render('articles/addArticle', {
+    res.render('artilces/showClipAdd', {
       errors: errors,
       title: req.body.title,
       body: req.body.body
@@ -71,9 +66,9 @@ router.post('/', ensureAuthenticated, adminAuthentication, (req, res) => {
       body: req.body.body
     };
     console.log(userAdmin.body);
-    new Article(userAdmin).save().then(article => {
-      req.flash('success_msg', 'Article added');
-      res.redirect('/admin/newsletter');
+    new ShowClips(userAdmin).save().then(showClips => {
+      req.flash('success_msg', 'Show Clip added');
+      res.redirect('/admin/showClips');
     });
   }
 });
@@ -95,9 +90,9 @@ router.put('/:id', ensureAuthenticated, adminAuthentication, (req, res) => {
 });
 //Delete Article
 router.delete('/:id', ensureAuthenticated, adminAuthentication, (req, res) => {
-  Article.deleteOne({ _id: req.params.id }).then(() => {
-    req.flash('success_msg', 'Article removed');
-    res.redirect('/shows');
+  ShowClips.deleteOne({ _id: req.params.id }).then(() => {
+    req.flash('success_msg', 'Show Clip removed');
+    res.redirect('/admin/showClips');
   });
 });
 

@@ -1,0 +1,34 @@
+<section class="card col-md-10 mx-auto mb-5">
+    <div class="card-body">
+
+        <h3>Current Family List</h3>
+
+        <hr>
+        <ul class="list-group">
+            {{#each user.kidname}}
+
+            <li class="list-group-item sandy text-white" id="{{id}}">
+                <strong>{{name}}</strong>
+            </li>
+            {{else}}
+            <li class="list-group-item sandy">
+                <strong> No kids listed</strong>
+            </li>
+            {{/each}}
+        </ul>
+        <hr>
+        <h3>Add Kids</h3>
+        <hr>
+        <form action="/kids/add?_method=PUT" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input value="{{name}}" type="text" name="name" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+
+        <!--<button class="mt-2 btn btn-primary float-right">Missing a kid?</button>-->
+    </div>
+</section>

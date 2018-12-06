@@ -1,0 +1,29 @@
+<!-- This is  a private view-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card card-body">
+                <h3 class="text-center">Show Clips</h3>
+                <a href="/showClips/Add" class="btn btn-primary btn-block mb-2"><i class="fas fa-plus mr-2"></i>Add
+                    Show Clip</a>
+            </div>
+        </div>
+    </div>
+    <br>
+    <h3>Show Clips</h3>
+    <hr>
+
+    {{#each showClips}}
+    <div class="card card-body mb-2">
+        <h4>{{title}}</h4>
+        <a href="/showClips/edit/{{id}}" class="btn btn-dark btn-block mb-2">Edit</a>
+        <form method="post" action="/showClips/{{id}}?_method=DELETE">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-danger btn-block" value="Delete">
+        </form>
+    </div>
+
+    {{else}}
+    <p>No Show Clips Listed</p>
+    {{/each}}
+</div>

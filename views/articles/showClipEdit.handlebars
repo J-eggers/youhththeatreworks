@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card card-body">
+        <h3>Edit Show Clip</h3>
+        <form action="/articles/{{showClips.id}}?_method=PUT" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input required type="text" class="form-control" name="title" value="{{showClips.title}}">
+            </div>
+            <div class="form-group">
+                <label for="rehearsal">Body</label>
+                <textarea required class="form-control" name="body">{{showClips.body}}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
