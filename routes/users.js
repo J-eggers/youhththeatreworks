@@ -51,18 +51,6 @@ router.get('/register', (req, res) => {
 router.get('/kids', (req, res) => {
   res.render('users/kids');
 });
-//Upaditng the User by his IDEA to being restisted
-router.put('/users/register/:id', ensureAuthenticated, (req, res) => {
-  id: req.params.id;
-  let update = { registered: true };
-  let options = { new: true };
-
-  //Updating the Use
-  User.findOneAndUpdate(query, udpate, { new: true }, function(err, doc) {
-    if (err) return res.send({ error: err });
-    return res.send({ text: 'text succesfully saved' });
-  });
-});
 
 //___________ End of user Routes _________
 // ____________ User Process _____________
