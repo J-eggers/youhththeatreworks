@@ -25,7 +25,7 @@
     "stripe": "^6.12.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.7",
+    "browser-sync": "^2.26.3",
     "gulp": "^3.9.1",
     "gulp-sass": "^4.0.1"
   }
