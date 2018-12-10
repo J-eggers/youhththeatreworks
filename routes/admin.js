@@ -14,6 +14,8 @@ require('../models/Articles');
 const Article = mongoose.model('articles');
 require('../models/ShowClips');
 const ShowClips = mongoose.model('showClips');
+require('../models/Quotes');
+const Quote = mongoose.model('quote');
 
 // ________________________________
 
@@ -192,5 +194,32 @@ router.get(
   }
 );
 
-router.put;
+//___________ Quote Submition Process ________
+router.post('/quote', ensureAuthenticated, adminAuthentication, (req, res) => {
+  let errors = [];
+
+  if (!req.body.quote) {
+    errors.push({ text: 'Please add a title' });
+  }
+  if (!req.body.person) {
+    errors.push({ text: 'Please select a show date' });
+  }
+  if (errors.length > 0) {
+    res.render('artilces/showClipAdd', {
+      errors: errors,
+      person: req.body.person,
+      quote: req.body.quote
+    });
+  } else {
+    const userAdmin = {
+      quote: req.body.quote,
+      person: req.body.person
+    };
+    new Quote(userAdmin).save().then(quote => {
+      req.flash('success_msg', 'quote added');
+      res.redirect('/admin');
+    });
+  }
+});
+
 module.exports = router;

@@ -31,6 +31,8 @@ require('./config/passport')(passport);
 
 //DB config
 const db = require('./config/database');
+//Handlebars Helpers
+const { truncate, formatDate, threeQuotes } = require('./helpers/hbs');
 
 //Conntect to mongoose  (database)
 mongoose
@@ -46,6 +48,8 @@ mongoose
 //______________    Load Model  ______________
 require('./models/Tickets');
 const ModelsTicket = mongoose.model('modelsTicket');
+require('./models/Quotes');
+const Quote = mongoose.model('quote');
 
 // _____________    MIDDLEWARE  ______________
 //Install Helmet - HTTP security
@@ -55,6 +59,11 @@ app.use(helmet());
 app.engine(
   'handlebars',
   exphbs({
+    helpers: {
+      truncate: truncate,
+      formatDate: formatDate,
+      threeQuotes: threeQuotes
+    },
     defaultLayout: 'main'
   })
 );
@@ -100,20 +109,24 @@ app.use(function(req, res, next) {
 // ________________ ROUTES _______________
 //Index Route
 app.get('/', (req, res) => {
-  const title = 'Youth Theatre';
-  ModelsTicket.findOne({
-    published: true
-  }).then(modelsTicket => {
-    if (modelsTicket) {
-      res.render('index', {
-        title: title,
-        modelsTicket: modelsTicket
-      });
-    } else {
-      res.render('index', {
-        title: title
-      });
-    }
+  Quote.find({}).then(quote => {
+    const title = 'Youth Theatre';
+    ModelsTicket.findOne({
+      published: true
+    }).then(modelsTicket => {
+      if (modelsTicket) {
+        res.render('index', {
+          title: title,
+          quote: quote,
+          modelsTicket: modelsTicket
+        });
+      } else {
+        res.render('index', {
+          title: title,
+          quote: quote
+        });
+      }
+    });
   });
 });
 

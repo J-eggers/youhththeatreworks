@@ -51,27 +51,21 @@
                 <img src="img/13584760_1125661377457262_4812918032024766761_o.jpg" alt="" class="img-fluid mb-3 rounded-circle">
             </div>
             <div class="col-md-6 order-1">
-                <h3>Create Your Passion</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas temporibus commodi illo
-                    consequatur libero rerum adipisci vel rem, obcaecati harum.</p>
+                <h3>Parent Experiences</h3>
+
+                {{#each (threeQuotes quote 3)}}
+
                 <div class="d-flex">
-                    <div class="p-4 align-self-start">
+                    <!-- <div class="p-4 align-self-start">
                         <i class="fas fa-check fa-2x"></i>
-                    </div>
+                    </div>-->
                     <div class="p-4 align-self-end">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint sapiente, vero asperiores
-                        iste ullam.
+                        <p class="p-0 m-0">"{{quote}}"</p>
+                        <small class="float-right">-{{person}}</small>
+
                     </div>
                 </div>
-                <div class="d-flex">
-                    <div class="p-4 align-self-start">
-                        <i class="fas fa-check fa-2x"></i>
-                    </div>
-                    <div class="p-4 align-self-end">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nisi, quasi recusandae
-                        assumenda error nam.
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>
@@ -115,27 +109,21 @@
                 <img src="img/13584760_1125661377457262_4812918032024766761_o.jpg" alt="" class="img-fluid mb-3 rounded-circle">
             </div>
             <div class="col-md-6 order-1">
-                <h3>Create Your Passion</h3>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas temporibus commodi illo
-                    consequatur libero rerum adipisci vel rem, obcaecati harum.</p>
+                <h3>Parent Experiences</h3>
+
+                {{#each (threeQuotes quote 3)}}
+
                 <div class="d-flex">
-                    <div class="p-4 align-self-start">
+                    <!-- <div class="p-4 align-self-start">
                         <i class="fas fa-check fa-2x"></i>
-                    </div>
+                    </div>-->
                     <div class="p-4 align-self-end">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat sint sapiente, vero asperiores
-                        iste ullam.
+                        <p class="p-0 m-0">"{{quote}}"</p>
+                        <small class="float-right">-{{person}}</small>
+
                     </div>
                 </div>
-                <div class="d-flex">
-                    <div class="p-4 align-self-start">
-                        <i class="fas fa-check fa-2x"></i>
-                    </div>
-                    <div class="p-4 align-self-end">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nisi, quasi recusandae
-                        assumenda error nam.
-                    </div>
-                </div>
+                {{/each}}
             </div>
         </div>
     </div>

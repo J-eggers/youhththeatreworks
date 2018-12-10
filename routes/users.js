@@ -5,6 +5,7 @@ const passport = require('passport');
 const router = express.Router();
 const smtpTransport = require('../config/mailer');
 const { ensureAuthenticated, adminAuthentication } = require('../helpers/auth');
+const crypto = require('crypto');
 
 // ______________Models ___________
 //Load User Model
@@ -25,8 +26,100 @@ router.get('/login', (req, res) => {
 router.get('/forgotPassword', (req, res) => {
   res.render('users/forgotPassword');
 });
+router.get('/resetPassword/:token', (req, res) => {
+  const token = req.params.token;
+  User.findOne({
+    resetPasswordToken: token,
+    resetPasswordExpires: { $gt: Date.now() }
+  }).then(user => {
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired.');
+      res.redirect('/users/login');
+    } else {
+      res.render('users/resetPassword', {
+        token: token
+      });
+    }
+  });
+});
 //Forgot Password Post
-router.post('/forgot', (req, res) => {});
+router.post('/forgotPassword', (req, res) => {
+  if (req.body.email === '') {
+    req.flash('error_msg', 'make sure to enter an email');
+    res.redirect('/users/forgotPassword');
+  }
+  User.findOne({ email: req.body.email }).then(user => {
+    if (user === null) {
+      req.flash('error_msg', 'No user found with that email');
+      res.redirect('/users/forgotPassword');
+    } else {
+      const token = crypto.randomBytes(20).toString('hex');
+      console.log(token);
+      user.resetPasswordToken = token;
+      user.resetPasswordExpires = Date.now() + 360000;
+      user.save();
+
+      const mailOptions = {
+        from: 'youththeatreworkscumc@gmail.com',
+        to: `${user.email}`,
+        subject: `Reset Password Link`,
+        text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n Please click on the following link, or paste this into your browser to complete the process:\n\n ${__dirname}/user/resetPassword/${token}\n\n If you did not request this, please ignore this email and your password will remain unchanged.\n`
+      };
+
+      smtpTransport.sendMail(mailOptions, function(err, response) {
+        if (err) {
+          console.log('there was an error:', err);
+        } else {
+          console.log('here is the res:', response);
+          res.render('users/sentEmail');
+        }
+      });
+    }
+  });
+});
+//Reset password Post
+router.post('/resetPassword/:token', (req, res) => {
+  const token = req.params.token;
+  const password = req.body.password1;
+  if (password != req.body.password2) {
+    req.flash('error', 'Passwords did not match');
+    return res.redirect(`/users/resetPassword/${token}`);
+  } else {
+    User.findOne({
+      resetPasswordToken: token,
+      resetPasswordExpires: { $gt: Date.now() }
+    }).then(user => {
+      if (!user) {
+        req.flash('error', 'Password reset token is invalid or has expired.');
+        return res.redirect(`/users/resetPassword/${token}`);
+      } else {
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+        //Salt password
+        const saltRounds = 10;
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+          bcrypt.hash(password, salt, function(err, hash) {
+            if (err) throw err;
+            user.password = hash;
+            user
+              .save()
+              .then(user => {
+                req.flash(
+                  'success_msg',
+                  'Your password has been updated and you can now log in'
+                );
+                res.redirect('/users/login');
+              })
+              .catch(err => {
+                console.log(err);
+                return;
+              });
+          });
+        });
+      }
+    });
+  }
+});
 //Users Home
 router.get('/home', ensureAuthenticated, (req, res) => {
   let id = req.user.subscribed;
