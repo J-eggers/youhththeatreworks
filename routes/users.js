@@ -54,16 +54,16 @@ router.post('/forgotPassword', (req, res) => {
       res.redirect('/users/forgotPassword');
     } else {
       const token = crypto.randomBytes(20).toString('hex');
-      console.log(token);
       user.resetPasswordToken = token;
       user.resetPasswordExpires = Date.now() + 360000;
       user.save();
-
       const mailOptions = {
         from: 'youththeatreworkscumc@gmail.com',
         to: `${user.email}`,
         subject: `Reset Password Link`,
-        text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n Please click on the following link, or paste this into your browser to complete the process:\n\n ${__dirname}/user/resetPassword/${token}\n\n If you did not request this, please ignore this email and your password will remain unchanged.\n`
+        text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n Please click on the following link, or paste this into your browser to complete the process:\n\n http://${
+          req.headers.host
+        }/users/resetPassword/${token}\n\n If you did not request this, please ignore this email and your password will remain unchanged.\n`
       };
 
       smtpTransport.sendMail(mailOptions, function(err, response) {
