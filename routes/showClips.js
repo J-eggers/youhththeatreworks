@@ -65,7 +65,7 @@ router.post('/', ensureAuthenticated, adminAuthentication, (req, res) => {
       title: req.body.title,
       body: req.body.body
     };
-    console.log(userAdmin.body);
+
     new ShowClips(userAdmin).save().then(showClips => {
       req.flash('success_msg', 'Show Clip added');
       res.redirect('/admin/showClips');

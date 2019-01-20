@@ -70,7 +70,6 @@ router.post('/', ensureAuthenticated, adminAuthentication, (req, res) => {
       title: req.body.title,
       body: req.body.body
     };
-    console.log(userAdmin.body);
     new Article(userAdmin).save().then(article => {
       req.flash('success_msg', 'Article added');
       res.redirect('/admin/newsletter');

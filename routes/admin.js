@@ -146,7 +146,7 @@ router.post(
   adminAuthentication,
   (req, res) => {
     let idInput = { _id: req.params.id };
-    let reminderInput = req.body.reminder;
+    let reminderInput = req.body.body;
     Show.updateOne(
       idInput,
       { reminder: reminderInput },

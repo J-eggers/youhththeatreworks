@@ -36,6 +36,11 @@ hr {
   transition: -webkit-box-shadow 0.25s;
   transition: box-shadow 0.25s;
   transition: box-shadow 0.25s, -webkit-box-shadow 0.25s; }
+  .card p a {
+    color: #cdb33a;
+    text-shadow: 0 2px 2px rgba(61, 86, 37, 0.34), 0 3px 1px rgba(61, 86, 37, 0.32), 0 1px 5px rgba(61, 86, 37, 0.22); }
+  .card p a:hover {
+    color: #e0b127; }
 
 .form-control {
   border-color: #506d41;
@@ -156,6 +161,9 @@ label {
 
 #authors .registered {
   background: #050505; }
+
+#authors p {
+  text-shadow: 0 2px 2px rgba(61, 86, 37, 0.34), 0 3px 1px rgba(61, 86, 37, 0.32), 0 1px 5px rgba(61, 86, 37, 0.22); }
 
 #authors .fab {
   color: #fff; }

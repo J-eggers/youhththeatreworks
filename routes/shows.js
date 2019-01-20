@@ -50,7 +50,6 @@ router.put('/register/:id', ensureAuthenticated, (req, res) => {
       { new: true },
       (err, user) => {
         if (err) return err;
-        console.log('updated');
       }
     );
     //Updating User Subscribed
@@ -84,7 +83,6 @@ router.put('/register/:id', ensureAuthenticated, (req, res) => {
         .save()
 
         .then(show => {
-          console.log(show.id);
           req.flash('success_msg', 'Child added');
           res.redirect(`/shows/register/${show.id}`);
         });
@@ -183,7 +181,7 @@ router.post('/', ensureAuthenticated, adminAuthentication, (req, res) => {
   if (!req.body.description) {
     errors.push({ text: 'Please add a show description' });
   }
-  if (!req.body.rehearsal) {
+  if (!req.body.body) {
     errors.push({ text: 'Please add a rehearsal dates' });
   }
   if (errors.length > 0) {
@@ -192,14 +190,14 @@ router.post('/', ensureAuthenticated, adminAuthentication, (req, res) => {
       title: req.body.title,
       showDate: req.body.showDate,
       description: req.body.description,
-      rehearsal: req.body.rehearsal
+      rehearsal: req.body.body
     });
   } else {
     const userAdmin = {
       title: req.body.title,
       showDate: req.body.showDate,
       description: req.body.description,
-      rehearsal: req.body.rehearsal
+      rehearsal: req.body.body
     };
     new Show(userAdmin).save().then(show => {
       User.updateMany(
@@ -224,7 +222,7 @@ router.put('/:id', ensureAuthenticated, adminAuthentication, (req, res) => {
     show.title = req.body.title;
     show.showDate = req.body.showDate;
     show.description = req.body.description;
-    show.rehearsal = req.body.rehearsal;
+    show.rehearsal = req.body.body;
 
     show.save().then(show => {
       req.flash('success_msg', 'Show updated');

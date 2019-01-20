@@ -73,6 +73,14 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//Lets encrypt Middleware
+const letsEncryptReponse = process.env.CERTBOT_RESPONSE;
+
+// Return the Let's Encrypt certbot response:
+app.get('/.well-known/acme-challenge/:content', function(req, res) {
+  res.send(letsEncryptReponse);
+});
+
 //Static folder
 app.use(express.static(path.join(__dirname, 'public')));
 //Method Override middleware

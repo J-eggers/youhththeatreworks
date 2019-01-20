@@ -106,7 +106,6 @@ router.put('/kidEdit/:id', ensureAuthenticated, (req, res) => {
       _id: kid.id,
       'kidname._id': kidID
     };
-    console.log(allergies);
 
     if (req.user.rank === 'admin' || req.user.id === kid.id) {
       User.updateOne(

@@ -19,9 +19,7 @@ module.exports = {
     const peopleArray = Object.keys(quote).map(i => quote[i]);
     for (i = 0; i < 3; i++) {
       let rand = Math.floor(Math.random() * peopleArray.length);
-      console.log(rand);
       threeQuotes.push(peopleArray[rand]);
-      console.log(threeQuotes);
     }
 
     return threeQuotes;
