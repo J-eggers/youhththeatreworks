@@ -253,7 +253,7 @@ router.post(
             show: show,
             errors: errors,
             subject: req.body.subject,
-            email: req.body.body
+            html: req.body.body
           });
         }
       });
