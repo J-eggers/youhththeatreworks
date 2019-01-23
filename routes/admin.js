@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
+const smtpTransport = require('../config/mailer');
 const { ensureAuthenticated, adminAuthentication } = require('../helpers/auth');
 
 //___________  Load Model  ___________
@@ -157,6 +158,131 @@ router.post(
         res.redirect('/admin');
       }
     );
+  }
+);
+//__________ Render Email_______
+router.get('/email', ensureAuthenticated, adminAuthentication, (req, res) => {
+  res.render('admin/email');
+});
+//Render Cast Email
+router.get(
+  '/email/:id',
+  ensureAuthenticated,
+  adminAuthentication,
+  (req, res) => {
+    Show.findOne({
+      _id: req.params.id
+    }).then(show => {
+      if (show) {
+        res.render('admin/email', {
+          show: show
+        });
+      } else {
+        req.flash('error_msg', 'Show No longer exists');
+        res.redirect('/admin/subscribe');
+      }
+    });
+  }
+);
+//Process Mass Email
+router.post('/email', ensureAuthenticated, adminAuthentication, (req, res) => {
+  let id = req.params.id;
+  let errors = [];
+  if (!req.body.body) {
+    errors.push({ text: 'Please add your message' });
+  }
+  if (!req.body.subject) {
+    errors.push({ text: 'Please add your subject' });
+  }
+  //Server side validation
+  if (errors.length > 0) {
+    res.render('admin/email', {
+      show: show,
+      errors: errors,
+      subject: req.body.subject,
+      email: req.body.body
+    });
+  } else {
+    User.find({}).then(user => {
+      if (user === null) {
+        req.flash('error_msg', 'No users found with that email');
+        res.redirect('/admin');
+      } else {
+        let mailOptions = {
+          from: 'youththeatreworkscumc@gmail.com',
+          to: 'placeholder',
+          subject: req.body.subject,
+          html: req.body.body
+        };
+        for (let i = 0; i < user.length; i++) {
+          mailOptions.to = user[i].email;
+
+          console.log(mailOptions);
+          smtpTransport.sendMail(mailOptions, function(err, response) {
+            if (err) {
+              console.log('there was an error:', err);
+            }
+          });
+        }
+        res.render('users/sentEmail');
+      }
+    });
+  }
+});
+//Process Cast Email
+router.post(
+  '/email/:id',
+  ensureAuthenticated,
+  adminAuthentication,
+  (req, res) => {
+    let id = req.params.id;
+    let errors = [];
+    if (!req.body.body) {
+      errors.push({ text: 'Please add your message' });
+    }
+    if (!req.body.subject) {
+      errors.push({ text: 'Please add your subject' });
+    }
+    //Server side validation
+    if (errors.length > 0) {
+      Show.findOne({
+        _id: id
+      }).then(show => {
+        if (show) {
+          res.render('admin/email', {
+            show: show,
+            errors: errors,
+            subject: req.body.subject,
+            email: req.body.body
+          });
+        }
+      });
+    } else {
+      User.find({ subscribed: id }).then(user => {
+        if (user === null) {
+          req.flash('error_msg', 'No users found with that email');
+          res.redirect('/admin');
+        } else {
+          let mailOptions = {
+            from: 'youththeatreworkscumc@gmail.com',
+            to: 'placeholder',
+            subject: req.body.subject,
+            html: req.body.body
+          };
+          for (let i = 0; i < user.length; i++) {
+            mailOptions.to = user[i].email;
+
+            console.log(mailOptions);
+            smtpTransport.sendMail(mailOptions, function(err, response) {
+              if (err) {
+                console.log('there was an error:', err);
+              }
+            });
+          }
+          res.render('users/sentEmail');
+        }
+      });
+    }
   }
 );
 //__________ Get Shows to see Cast_______

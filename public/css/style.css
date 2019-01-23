@@ -171,6 +171,20 @@ label {
 #authors .mask-icon {
   font-size: 8em; }
 
+#authors a {
+  color: #fff;
+  text-shadow: 0 2px 2px rgba(61, 86, 37, 0.34), 0 3px 1px rgba(61, 86, 37, 0.32), 0 1px 5px rgba(61, 86, 37, 0.22);
+  text-decoration: underline; }
+
+#authors a:hover {
+  color: #2c4613; }
+
+#contact a {
+  color: #cdb33a; }
+
+#contact a:hover {
+  color: #e0b127; }
+
 .bodyArticle {
   white-space: pre-wrap; }
 
